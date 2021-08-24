@@ -7,9 +7,14 @@ admin.site.unregister(User)
 
 # Register out own model admin, based on the default UserAdmin
 
+admin.site.site_header = 'Login'
+admin.site.site_title = 'Admin'
+admin.site.index_title = 'Site Admin'
+
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
+    change_user_password_template = 'templates/registration/password_reset_form.html'
     readonly_fields = [
         'date_joined',
         'last_login',
