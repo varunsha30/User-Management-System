@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}User List{% endblock %}
+
+{% block content %}
+
+<h1>User List</h1>
+<dl>
+    {% for user in user_list %}
+    <dt>{{ user.username }}</dt>
+    <dd>{{ user.first_name }}</dd>
+    <dd>
+        {% if user.email %}
+        {{ user.email }}
+        {% endif %}
+    </dd>
+    <dd>
+        {% if user.is_staff %}
+        Hello staff!!!
+        {% endif %}
+    </dd>
+    <dd>
+        {% if user.is_superuser %}
+        Hello superuser!!
+        {% endif %}
+    </dd>
+    <dd>
+        {% if user.password %}
+        {{ user.password }}
+    </dd>
+    <br>
+    {% endif %}
+    {% endfor %}
+</dl>
+
+{% endblock %}

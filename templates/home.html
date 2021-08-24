@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+Hi {{ user.username }}!
+<p><a href="{% url 'logout' %}">Log Out</p>
+<p>Forgot Password? <a href="{% url 'password_reset' %}">Click Here</a> </p>
+<a href="{% url 'admin:index' %}">Go to Admin site</a>
+{% else %}
+<p>You are not logged in</p>
+<p><a href="{% url 'login' %}">Log In</a> or <a href="{% url 'signup' %}">Sign Up</a></p>
+<a href="{% url 'admin:index' %}">Admin login</a>
+{% endif %}
+{% endblock %}
